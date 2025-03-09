@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="buttonCompat">@style/Theme.Material3.DynamicColors.Dark</item>
+        <item name="colorAccent">@color/MidnightBlue</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+<!--    <item name="alertDialogTheme" parent="@style/ThemeOverlay.AppCompat.Dialog.Alert">@style/AlertDialog</item>-->
+<!--    <style name="AlertDialog" parent="ThemeOverlay.AppCompat.Dialog.Alert">-->
+<!--        <item name="android:buttonStyle">@style/RoundedButtonDialog</item>-->
+<!--        <item name="android:windowBackground">@drawable/dialog_background</item>-->
+<!--        <item name="buttonGravity">center_vertical</item>-->
+<!--        <item name="android:padding">1dp</item>-->
+<!--    </style>-->
+
+<!--    <style name="RoundedButtonDialog">-->
+<!--        <item name="android:textColor">@color/MidnightBlue</item>-->
+<!--        <item name="android:padding">22dp</item>-->
+<!--        <item name="android:textSize">18sp</item>-->
+<!--        <item name="android:textStyle">bold</item>-->
+<!--    </style>-->
+
+</resources>

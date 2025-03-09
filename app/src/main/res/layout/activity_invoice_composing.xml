@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<com.google.android.material.appbar.AppBarLayout
+    android:id="@+id/appbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.appbar.CollapsingToolbarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_scrollFlags="scroll|enterAlways"
+        android:background="@drawable/radiant_gradient_2"
+        app:toolbarId="@+id/toolbar">
+
+            <LinearLayout
+                android:id="@+id/edit_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="12dp"
+                android:elevation="12dp"
+                android:background="@drawable/rounded_button"
+                android:backgroundTint="@color/LightGrey"
+                android:layout_marginHorizontal="18dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="12dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginVertical="2dp"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:id="@+id/invoice_ID"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif"
+                        android:textColor="@color/Black"
+                        android:layout_weight="1"
+                        android:text="@string/invoice_compose_ex_id"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/textview_total_price_invoice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="sans-serif"
+                        android:text="@string/invoice_composing_ex_total_price"
+                        android:textAlignment="textEnd"
+                        android:textSize="16sp"
+                        android:textColor="@color/UnknownBlack"
+                        android:textStyle="italic" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textview_total_items"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
+                    android:text="@string/invoice_composing_number_of_items_in_card"
+                    android:textColor="@color/UnknownBlack"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/spinner_items"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="8dp"
+                    android:backgroundTint="@color/UnknownBlack"
+                    android:gravity="center"
+                    android:paddingVertical="6dp"
+                    android:spinnerMode="dialog"
+                    android:textAlignment="center" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <EditText
+                        android:id="@+id/edit_quantity"
+                        android:backgroundTint="@color/UnknownBlack"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_weight="1"
+                        android:hint="@string/invoice_composing_ex_quantity"
+                        android:textColor="@color/Navy"
+                        android:layout_gravity="center_horizontal"
+                        android:textSize="24sp"
+                        android:autofillHints="postalCode"
+                        android:inputType="numberDecimal"
+                        android:textAlignment="center" />
+
+                    <Button
+                        android:id="@+id/adding_button"
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:background="@drawable/rounded_button"
+                        android:textColor="@color/White"
+                        android:layout_weight="1"
+                        android:fontFamily="sans-serif"
+                        android:layout_gravity="center_vertical"
+                        android:text="@string/invoice_composing_button_text_add_items"
+                        android:textSize="22sp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textview_total_price_item_added"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
+                    android:textSize="18sp"
+                    android:textAlignment="center"
+                    android:layout_marginVertical="2dp"
+                    android:textStyle="italic" />
+            </LinearLayout>
+
+    </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+</com.google.android.material.appbar.AppBarLayout>
+
+<androidx.core.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginVertical="8dp"
+            android:fontFamily="sans-serif"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/composing_invoice_create_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:contentDescription="@string/invoice_composing_button_des_done"
+        app:backgroundTint="@color/UnknownBlack"
+        app:srcCompat="@drawable/invocie_composing_done"
+        app:elevation="0dp"
+        android:layout_margin="20dp"
+        app:fabSize="auto"
+        app:maxImageSize="32dp"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/composing_invoice_cancel_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginHorizontal="72dp"
+        android:contentDescription="@string/invoice_composing_cancel_button_des"
+        android:layout_marginVertical="20dp"
+        android:layout_marginEnd="100dp"
+        app:backgroundTint="@color/UnknownBlack"
+        app:srcCompat="@drawable/invoice_add_cancel_option"
+        app:fabSize="auto"
+        app:elevation="0dp"
+        app:maxImageSize="32dp"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <!--<LinearLayout-->
+    <!--    xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--    xmlns:tools="http://schemas.android.com/tools"-->
+    <!--    android:layout_width="match_parent"-->
+    <!--    android:layout_height="match_parent"-->
+    <!--    android:gravity="top"-->
+    <!--    android:orientation="vertical"-->
+    <!--    android:background="@drawable/endless_constellation"-->
+    <!--    android:backgroundTint="#35FFFFFF"-->
+    <!--    android:backgroundTintMode="add"-->
+    <!--    android:padding="12dp">-->
+

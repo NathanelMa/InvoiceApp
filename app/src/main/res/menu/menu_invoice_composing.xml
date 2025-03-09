@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/invoice_composing_remove_row"
+        android:icon="@drawable/invoice_remove_row"
+        android:title="@string/menu_remove"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/add_quantity"
+        android:icon="@drawable/items_add_new_item"
+        android:title="@string/menu_add_quantity"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/invoice_composing_reduce_amount"
+        android:icon="@drawable/items_remove_item"
+        android:title="@string/menu_reduce"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/invoice_composing_clear_selection"
+        android:icon="@drawable/invoice_manager_clear_selection"
+        android:title="@string/menu_undo_selection"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/change_layout"
+        android:icon="@drawable/set_grid_view_layout"
+        android:title="@string/menu_set_grid_layout"
+        app:showAsAction="always"/>
+
+</menu>

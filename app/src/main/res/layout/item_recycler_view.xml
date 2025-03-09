@@ -1,0 +1,109 @@
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="18dp"
+    app:cardElevation="2dp">
+
+    <LinearLayout
+        android:id="@+id/layout_invoice_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp"
+        android:background="@android:color/transparent"
+        android:weightSum="4">
+
+    <LinearLayout
+        android:id="@+id/layout_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:paddingVertical="2dp"
+        android:orientation="horizontal"
+        android:gravity="fill_horizontal">
+
+        <TextView
+            android:id="@+id/RV_item_ID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:layout_marginVertical="2dp"
+            android:text="@string/exp_id"
+            android:layout_gravity="start"
+            android:layout_weight="1"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/with_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/item_icon"
+            android:scaleType="centerInside"
+            android:src="@drawable/basic_item_icon"
+            app:tint="@color/UnknownBlack" />
+
+    </LinearLayout>
+
+        <TextView
+            android:id="@+id/RV_item_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/item_rv_name"
+            android:textSize="20sp"
+            android:fontFamily="sans-serif"
+            android:textStyle="bold"
+            android:textColor="@color/UnknownBlack"
+            android:gravity="start" />
+
+        <TextView
+            android:id="@+id/RV_item_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="2dp"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif"
+            android:text="@string/rv_description"
+            android:textSize="14sp"
+            android:gravity="start" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/RV_item_quantity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif"
+                android:visibility="gone"
+                android:text="quantity"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:gravity="start" />
+
+            <TextView
+                android:id="@+id/RV_item_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif"
+                android:layout_marginVertical="4dp"
+                android:layout_weight="1"
+                android:text="@string/exp_id"
+                android:textSize="20sp"
+                android:textStyle="bold|italic"
+                android:gravity="end" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

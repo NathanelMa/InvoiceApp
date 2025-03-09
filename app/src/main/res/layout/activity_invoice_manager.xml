@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/radiant_gradient">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:toolbarId="@+id/toolbar">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:weightSum="3">
+
+                <LinearLayout
+                    android:id="@+id/layout_search_by_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <androidx.appcompat.widget.SearchView
+                        android:id="@+id/invoice_manager_search_bar"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/UnknownBlack"
+                        android:inputType="numberDecimal"
+                        android:queryHint="Search View"
+                        android:textColor="@color/White"
+                        android:textAlignment="center" />
+
+                    <Button
+                        android:id="@+id/invoice_manager_search_id_button"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:background="@drawable/rounded_button"
+                        android:fontFamily="sans-serif"
+                        android:text="@string/invoice_manager_searchID_button"
+                        android:textColor="@color/White"
+                        android:textSize="20sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layout_search_by_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:id="@+id/invoice_manager_date_textview"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:text="@string/invoices_manager_search_date_format_bar"
+                        android:textAlignment="center"
+                        android:textColor="@color/White"
+                        android:textSize="22sp" />
+
+                    <Button
+                        android:id="@+id/invoice_manager_date_piker_button"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:background="@drawable/rounded_button"
+                        android:fontFamily="sans-serif"
+                        android:text="@string/invoice_manager_searchDate_button"
+                        android:textColor="@color/White"
+                        android:textSize="20sp" />
+
+                </LinearLayout>
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/layout_sort_menu"
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"
+                    android:background="#7F000000"
+                    android:gravity="center">
+
+                    <ImageButton
+                        android:id="@+id/button_sort_recent"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:layout_marginHorizontal="16dp"
+                        android:background="@android:color/transparent"
+                        android:contentDescription="@string/invoices_manager_sort_recent_des"
+                        android:src="@drawable/invoice_manager_sorted_recent" />
+
+                    <ImageButton
+                        android:id="@+id/button_sort_price"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:layout_marginHorizontal="16dp"
+                        android:background="@android:color/transparent"
+                        android:contentDescription="@string/invoices_manager_sort_price_des"
+                        android:src="@drawable/items_sorted_by_price" />
+
+                    <ImageButton
+                        android:id="@+id/button_invoices_remove"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:layout_marginHorizontal="16dp"
+                        android:background="@android:color/transparent"
+                        android:contentDescription="@string/invoices_manager_remove_button_des"
+                        android:src="@drawable/invoice_composing_clear_list" />
+
+                    <ImageButton
+                        android:id="@+id/button_clear_selection"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:layout_marginHorizontal="16dp"
+                        android:background="@android:color/transparent"
+                        android:contentDescription="@string/invoices_manager_clear_sel_button_des"
+                        android:src="@drawable/invoice_manager_clear_selection" />
+
+                    <ImageButton
+                        android:id="@+id/button_edit_selected_invoice"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:layout_marginHorizontal="16dp"
+                        android:background="@android:color/transparent"
+                        android:contentDescription="@string/invoices_manager_edit_button_des"
+                        android:src="@drawable/items_edit" />
+
+                </androidx.appcompat.widget.Toolbar>
+
+            </LinearLayout>
+
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginVertical="8dp"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/invoice_compose_floating_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="22dp"
+        android:contentDescription="@string/invoices_manager_add_button"
+        app:backgroundTint="@color/UnknownBlack"
+        app:elevation="0dp"
+        app:fabCustomSize="72dp"
+        app:fabSize="auto"
+        app:maxImageSize="42dp"
+        app:srcCompat="@drawable/invoice_compose" />
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

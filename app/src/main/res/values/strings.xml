@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">InvoiceApp</string>
+    <string name="selection_no_input_selected">Selected one or more item</string>
+    <string name="no_data_found">No items found in database</string>
+    <string name="error_action_data_base">Action Fail (Database)</string>
+    <string name="error_input">Invalid input</string>
+    <string name="statistics_title">Statistics</string>
+
+    <!--    Dialogs -->
+    <string name="dialog_confirm">Confirm</string>
+    <string name="dialog_close">Close</string>
+    <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_save">Save</string>
+    <string name="dialog_remove">Remove</string>
+    <string name="dialog_saved">Saved</string>
+    <string name="dialog_edited">Edited</string>
+    <string name="dialog_add_button">Add</string>
+    <string name="dialog_canceled_by_user">Canceled</string>
+    <string name="action_failed">Action Fail</string>
+    <string name="action_needed">Please fill all item details</string>
+    <string name="dialog_title_edit_selected">Edit Selected Item</string>
+    <string name="dialog_title_removing_selected">Removing Confirmation</string>
+    <string name="dialog_title_confirmation">Confirmation</string>
+
+
+    <!--    /////////////////////////       -->
+    <!--    Home       -->
+    <string name="home_title">Home</string>
+    <string name="image">Image Des</string>
+    <string name="home_profile_edit">Profile Edit</string>
+    <string name="home_statistics">Statistics</string>
+    <string name="home_items_manager">Items Manager</string>
+    <string name="home_invoice_manager">Invoice Manager</string>
+    <string name="info_about_us">Create by: NathanEl Mark, Dor Binyamin and Orel Gigi</string>
+
+    <!--    /////////////////////////       -->
+    <!--    Items Manager       -->
+    <string name="item_manager_selected_removed">Selected items removed</string>
+    <string name="item_manager_item_added">New item added</string>
+    <string name="item_icon">Item Icon</string>
+    <string name="item_manager_item_price">Item Price</string>
+    <string name="item_manager_item_description">Item Description</string>
+    <string name="item_manager_item_name">Item Name</string>
+    <string name="item_manager_new_item">New item</string>
+    <string name="item_manager_total_items"><b>%d Total Items</b></string>
+    <string name="item_manager_exists_item">Item already exists in database</string>
+
+    <!--    /////////////////////////       -->
+    <!--    Invoice Manager -->
+    <string name="invoice_manager_activity_title">Invoices Manager</string>
+    <string name="invoice_manager_activity_no_data">No invoice found in database</string>
+    <string name="invoice_manager_activity_found_invoices"> Found %d invoices</string>
+    <string name="invoice_manager_sort_random">Random order. Total: %d</string>
+    <string name="invoice_manager_sort_value">Sort by value. Total: %d</string>
+    <string name="invoice_manager_sort_value_rev">Sort by value (reversed). Total: %d</string>
+    <string name="invoice_manager_sort_date">Sort by date. Total: %d</string>
+    <string name="invoice_manager_sort_date_rev">Sort by value (reversed). Total: %d</string>
+    <string name="invoice_manager_sort_both">Sort by date first, then by value. Total: %d</string>
+    <string name="invoice_manager_sort_both_rev">Sort by date first, then by value (rev).
+        Total: %d</string>
+    <string name="invoice_manager_date_input_default">DD/MM/YYYY</string>
+    <string name="invoice_manager_search_by_id_no_found">No invoice found by ID %d</string>
+    <string name="invoice_manager_activity_total_removed">Total invoices removed: %d</string>
+    <string name="invoice_manager_activity_invalid_invoice_id">Invalid invoice ID</string>
+    <string name="invoice_manager_activity_total_removing_conf">Total invoices for remove: %d</string>
+    <string name="invoices_manager_search_fail">No invoice found in database</string>
+    <string name="invoice_manager_selection_fail">No selected invoices</string>
+    <string name="menu_set_grid_layout">Set grid layout</string>
+    <string name="invoices_manager_print_fail">Select only one invoice to print</string>
+    <string name="invoices_manager_share_fail">Select only one invoice to share</string>
+    <string name="invoices_manager_edit_fail">Select only one invoice to edit</string>
+    <string name="invoices_manager_confirm_remove_dialog_1">Confirm removing</string>
+    <string name="invoices_manager_confirm_remove_dialog_2"> invoices?</string>
+    <string name="invoices_manager_confirm_remove_fail_selection">
+        Select one or more invoices to remove</string>
+    <string name="invoice_manager_remove_suc">Total invoices removed</string>
+    <!--  Search by date or ID  -->
+    <string name="invoice_manager_searchID_button">Search by ID</string>
+    <string name="invoice_manager_searchDate_button">Search by date</string>
+    <string name="invoice_manager_button_undo_search">Clear Filter</string>
+    <string name="invoices_manager_search_date_format_bar">DD/MM/YYYY</string>
+    <string name="invoice_manager_search_date_no_input">No input date for search</string>
+    <string name="invoices_manager_search_date_no_output">No invoice found by date: %s</string>
+    <string name="invoices_manager_searchID">Invalid ID</string>
+    <!--  Buttons content description-->
+    <string name="invoices_manager_sort_recent_des">Sort by recent</string>
+    <string name="invoices_manager_sort_price_des">Sort by price</string>
+    <string name="invoices_manager_edit_button_des">Edit</string>
+    <string name="invoices_manager_clear_sel_button_des">Clear Selection</string>
+    <string name="invoices_manager_remove_button_des">Remove selected</string>
+    <string name="invoices_manager_add_button">Compose New Invoice</string>
+
+    <!--    /////////////////////////       -->
+    <!--    Invoice Manager Dialog Show Invoice       -->
+    <string name="ex_date_dd_mm_yyyy">dd-mm-yyyy</string>
+    <string name="dialog_show_invoice_itemID">#</string>
+    <string name="dialog_show_invoice_name">Item Name</string>
+    <string name="dialog_show_invoice_value">Value</string>
+    <string name="dialog_show_invoice_amount">Amount</string>
+    <string name="dialog_show_invoice_total">Total</string>
+
+    <!--    /////////////////////////       -->
+    <!--    Edit profile / Company Activity       -->
+    <string name="company_name">Company name</string>
+    <string name="profile_edit_title">Profile</string>
+    <string name="number_of_company">Number of company</string>
+    <string name="id_of_company">ID of company</string>
+    <string name="location_of_company">Location of company</string>
+    <string name="save">SAVE</string>
+    <string name="fill_details">Profile Details</string>
+    <string name="edit_profile">Edit profile</string>
+    <string name="edit_profile_invalid_name">Please enter the company name</string>
+    <string name="edit_profile_invalid_phone">Please enter a valid phone number</string>
+    <string name="edit_profile_invalid_id">Please enter a valid company ID (at least 8 digits)</string>
+    <string name="edit_profile_invalid_location">Please enter the company location</string>
+    <string name="edit_profile_updated_successfully">Company details updated successfully!</string>
+    <string name="edit_profile_new_successfully">New company saved successfully!</string>
+
+    <!--    /////////////////////////       -->
+    <!--    Stats       -->
+    <string name="stats_statistics_overview">Statistics Overview</string>
+    <string name="stats_total_revenue_this_month">Total Revenue This Month:</string>
+    <string name="stats_date_info">Date info</string>
+    <string name="stats_best_selling_item">Best Selling Item:</string>
+    <string name="stats_n_a">N/A</string>
+    <string name="stats_largest_invoice_value">Largest Invoice Value:</string>
+    <string name="stats_date_with_highest_revenue">Date with Highest Revenue:</string>
+
+    <!--    /////////////////////////       -->
+    <!--    Menus       -->
+    <string name="menu_home">Home</string>
+    <string name="menu_info">About Us</string>
+    <string name="menu_edit_item">Edit item</string>
+    <string name="menu_remove_item">Remove item</string>
+    <string name="menu_sort_by_price">Sort by price</string>
+    <string name="menu_sort_by_name">Sort by name</string>
+    <string name="menu_add">Add</string>
+    <string name="menu_remove">Remove</string>
+    <string name="menu_add_quantity">Add Quantity</string>
+    <string name="menu_reduce">Reduce</string>
+    <string name="menu_undo_selection">Undo Selection</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_print_invoice">Print Selected Invoice</string>
+
+    <!--    /////////////////////////       -->
+    <!--    RV       -->
+    <string name="exp_id">000000000</string>
+    <string name="item_rv_name">Item Name</string>
+    <string name="rv_description">Description</string>
+        <string name="invoice_composing_cancel_button_des">Cancel</string>
+
+    <!--    /////////////////////////       -->
+    <!--    Invoice Composing       -->
+    <string name="invoice_composing_ex_total_price">Total Price:</string>
+    <string name="invoice_composing_number_of_items_in_card">Number of items in card:</string>
+    <string name="invoice_composing_ex_quantity">Quantity</string>
+    <string name="invoice_composing_button_text_add_items">Add items</string>
+    <string name="invoice_composing_button_des_done">Compose invoice</string>
+    <string name="invoice_compose_ex_id">#0000000</string>
+    <string name="invoice_compose_edit_mode_title">Invoice Edit</string>
+    <string name="invoice_compose_selected_items_removed">Selected items removed</string>
+    <string name="invoice_compose_total_items">Total items: %d</string>
+    <string name="invoice_compose_conf_cancel">Cancel?</string>
+    <string name="invoice_compose_finish_comp">Finish composing?</string>
+    <string name="invoice_compose_saved">Invoice saved</string>
+    <string name="invoice_compose_edit_saved">Edit invoice success</string>
+    <string name="invoice_compose_no_items_found">No items found in database</string>
+
+    <!--    /////////////////////////       -->
+    <!--    PDF Generator       -->
+    <string name="pdf_generator_print">Ready to print invoice</string>
+    <string name="pdf_generator">Ready to print invoice</string>
+</resources>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/endless_constellation"
+    android:backgroundTint="#2E20FF"
+    android:backgroundTintMode="add"
+    tools:context=".CompanyActivity">
+
+    <ScrollView
+        android:id="@+id/scrollable"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="16dp"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="31dp">
+
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="2dp"
+                android:fontFamily="sans-serif"
+                android:gravity="center"
+                android:text="@string/fill_details"
+                android:textAlignment="center"
+                android:textColor="@color/UnknownBlack"
+                android:textSize="42sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/editTextCompanyName"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_margin="16dp"
+                android:fontFamily="sans-serif"
+                android:hint="@string/company_name"
+                android:inputType="textPersonName"
+                android:autofillHints=""
+                android:textSize="22sp" />
+
+
+            <EditText
+                android:id="@+id/editTextCompanyPhone"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_margin="16dp"
+                android:fontFamily="sans-serif"
+                android:hint="@string/number_of_company"
+                android:inputType="phone"
+                android:autofillHints=""
+                android:textSize="22sp" />
+
+
+            <EditText
+                android:id="@+id/editTextCompanyId"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:autofillHints=""
+                android:layout_margin="16dp"
+                android:fontFamily="sans-serif"
+                android:hint="@string/id_of_company"
+                android:inputType="number"
+                android:textSize="22sp" />
+
+
+            <EditText
+                android:id="@+id/editTextCompanyLocation"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_margin="16dp"
+                android:autofillHints=""
+                android:fontFamily="sans-serif"
+                android:hint="@string/location_of_company"
+                android:inputType="textPostalAddress"
+                android:textSize="22sp" />
+
+
+            <Button
+                android:id="@+id/btnSave"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_button"
+                android:fontFamily="sans-serif"
+                android:padding="12dp"
+                android:text="@string/dialog_save"
+                android:textColor="@color/White"
+                android:textSize="22sp" />
+
+            <Button
+                android:id="@+id/btnCencel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_button"
+                android:fontFamily="sans-serif"
+                android:padding="12dp"
+                android:text="@string/dialog_cancel"
+                android:textColor="@color/White"
+                android:textSize="22sp"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

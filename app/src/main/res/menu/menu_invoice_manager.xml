@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/invoice_manager_invoice_share"
+        android:icon="@drawable/invoice_manager_invoice_share"
+        android:title="@string/menu_share"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/invoice_manager_print_selected"
+        android:icon="@drawable/print_option"
+        android:title="@string/menu_print_invoice"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/item_manager_home"
+        android:icon="@drawable/home"
+        android:title="@string/menu_home"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/home_info"
+        android:icon="@drawable/menu_info"
+        android:title="@string/menu_info"
+        app:showAsAction="ifRoom" />
+
+</menu>
