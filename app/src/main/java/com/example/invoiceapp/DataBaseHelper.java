@@ -8,14 +8,21 @@ package com.example.invoiceapp;
  */
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 import android.util.Pair;
 import androidx.annotation.NonNull;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -324,12 +331,12 @@ final class DatabaseHelper extends SQLiteOpenHelper {
     /**
      * Will return the best selling item, based on data from the tables.
      * @return Not empty string, contain the name (and price) of best selling item. If the item,
-     *  was removed, will contain "(Removed Item)". If no data to patch, will return "NO DATA".
+     *  was removed, will contain "N/A". If no data to patch, will return "NO DATA".
      */
     public @NonNull String bestSellingItem() {
         int itemID = this.invoiceRowsTable.getBestSellingItem();
         Pair<Item, Boolean> resPair = this.itemsTable.getItem(itemID);
-        String res = "NO DATA";
+        String res = "N/A";
 
         if (resPair != null && resPair.first != null) {
             if (resPair.second) {
@@ -341,10 +348,20 @@ final class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     /**
-     * Calculates the total revenue generated since the beginning of the current month.
-     * @return The total revenue as a double value.
+     * Calculates the total revenue for each month.
+     * If no revenue, the value will be 0.
+     * @return Array of revenue. Index 0 is January.
      */
-    public double getTotalRevenueThisMonth() {
-        return this.invoicesFramesTable.getTotalRevenueThisMonth();
+    public @NonNull double[] getTotalRevenues() {
+        double[] revenues = {0,0,0,0,0,0,0,0,0,0,0,0};
+        String[] IDsByMonths = this.invoicesFramesTable.getIDsByMonths();
+        // Query for all months in this year, get list of all invoice IDs for each month.
+        int month = 0;
+        for (String IDs: IDsByMonths) {
+            // IDs Format "ID_1,ID_2,..." or empty. 12 Months, Each one is one String.
+            double revenue = this.invoiceRowsTable.getTotalRevenueByIDs(IDs);
+            revenues[month++] = revenue;
+        }
+        return revenues;
     }
 }

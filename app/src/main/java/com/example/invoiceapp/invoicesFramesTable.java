@@ -39,7 +39,7 @@ public class invoicesFramesTable {
                         FeedEntry.DATE + " TEXT NOT NULL," +
                         FeedEntry.PRICE + " REAL NOT NULL);";
 
-    public static String getTableName() {
+    public static @NonNull String getTableName() {
         return FeedEntry.TABLE_NAME;
     }
 
@@ -81,7 +81,7 @@ public class invoicesFramesTable {
      * @param IDs Set, UNIQUE IDs of the invoices
      * @return True if successes.
      */
-    public boolean RemoveInvoiceFrames(Set<Integer> IDs) {
+    public boolean RemoveInvoiceFrames(@NonNull Set<Integer> IDs) {
         int deletedRows = 0;
         sqLiteDatabase.beginTransaction();
         try {
@@ -207,7 +207,7 @@ public class invoicesFramesTable {
      * Get all invoice frame found in the database.
      * @return List of all frames.
      */
-    public List<InvoiceFrame> getAllInvoices() {
+    public @NonNull List<InvoiceFrame> getAllInvoices() {
         List<InvoiceFrame> invoices = new ArrayList<>();
         Cursor cursor = null;
         try {
@@ -233,16 +233,13 @@ public class invoicesFramesTable {
      */
     public InvoiceFrame getInvoiceById(int ID) {
         InvoiceFrame invoice = null;
-        Cursor cursor = null;
-        try {
-            cursor = sqLiteDatabase.rawQuery(
-                    "SELECT * FROM " + FeedEntry.TABLE_NAME + " WHERE " + FeedEntry._ID
-                            + " = ?", new String[]{ String.valueOf(ID) });
+        try (Cursor cursor = sqLiteDatabase.rawQuery(
+                "SELECT * FROM " + FeedEntry.TABLE_NAME + " WHERE " + FeedEntry._ID
+                        + " = ?", new String[]{String.valueOf(ID)})) {
             if (cursor.moveToFirst()) {
                 int idIndex = cursor.getColumnIndexOrThrow(FeedEntry._ID);
-                int dateIndex =cursor.getColumnIndexOrThrow(FeedEntry.DATE);
+                int dateIndex = cursor.getColumnIndexOrThrow(FeedEntry.DATE);
                 int priceIndex = cursor.getColumnIndexOrThrow(FeedEntry.PRICE);
-
                 if (idIndex != -1 && dateIndex != -1 && priceIndex != -1) {
                     invoice = new InvoiceFrame(
                             cursor.getInt(idIndex),
@@ -251,51 +248,45 @@ public class invoicesFramesTable {
                     );
                 }
             }
-        }
-        catch (Exception e) { Log.e(FeedEntry.TABLE_NAME, e.toString()); }
-        finally { if (cursor != null) cursor.close(); }
+        } catch (Exception e) { Log.e(FeedEntry.TABLE_NAME, e.toString()); }
         return invoice;
     }
 
     /**
-     * Retrieves the total revenue from the beginning of the current month.
-     * @return The total revenue for the current month.
+     * Get for each month in the year all of invoice IDs. Index 0 is January.
+     * If no invoices for month x, there will be an empty String.
+     * @return Array (String) Format "ID_1, ID_2, ... , ID_n".
      */
-    public double getTotalRevenueThisMonth() {
+    public @NonNull String[] getIDsByMonths() {
+        String[] IDsListByMonths = new String[12];
+        for (int i = 0; i < 12; i++) IDsListByMonths[i] = "";
+
         String query =
-                "SELECT SUM(" + FeedEntry.PRICE + ") " +
+                "SELECT strftime('%m', " + FeedEntry.DATE + ") AS Month," +
+                        "       GROUP_CONCAT(" + FeedEntry._ID + ") AS InvoiceIDs " +
                         "FROM " + FeedEntry.TABLE_NAME + " " +
-                        "WHERE strftime('%Y-%m', " + FeedEntry.DATE + ") = strftime('%Y-%m', 'now');";
-        double revenue = 0;
-        try {
-            Cursor cursor = sqLiteDatabase.rawQuery(query, null);
-            if (cursor.moveToFirst()) {
-                revenue = cursor.getDouble(0);
+                        "WHERE strftime('%Y', " + FeedEntry.DATE + ") = strftime('%Y', 'now') " +
+                        "GROUP BY strftime('%m', " + FeedEntry.DATE + ") " +
+                        "ORDER BY Month;";
+
+        try (Cursor cursor = sqLiteDatabase.rawQuery(query, null)) {
+            while (cursor.moveToNext()) {
+                // Cursor over 'Months'
+                String invoiceIDsMonth = "";
+                int monthInt = 0;
+                int indexMonth = cursor.getColumnIndex("Month");
+                int indexIDs = cursor.getColumnIndex("InvoiceIDs");
+
+                // Path all IDs for current month, and patch the all IDs by this month
+                if (indexMonth >= 0 && indexIDs >= 0) {
+                    invoiceIDsMonth = cursor.getString(indexMonth);
+                    monthInt = Integer.parseInt(invoiceIDsMonth);
+                    String IDs = cursor.getString(indexIDs); // Format "ID_1,ID_2,..."
+                    IDsListByMonths[monthInt - 1] = IDs;
+                }
             }
-            cursor.close();
-
-        } catch (Exception e) { Log.e(FeedEntry.TABLE_NAME, e.toString()); }
-        return revenue;
-    }
-
-    /**
-     * Retrieves the date with the highest total revenue.
-     * @return The date with the highest revenue as a string, or null if no data exists.
-     */
-    public String getHighestRevenueDate() {
-        String query =
-                "SELECT " + FeedEntry.DATE + " " +
-                        "FROM " + FeedEntry.TABLE_NAME + " " +
-                        "ORDER BY " + FeedEntry.PRICE + " DESC " +
-                        "LIMIT 1;";
-
-        String highestRevenueDate = null;
-        try {
-            Cursor cursor = sqLiteDatabase.rawQuery(query, null);
-            if (cursor.moveToFirst())
-                highestRevenueDate = cursor.getString(0);
-            cursor.close();
-        } catch (Exception e) { Log.e(FeedEntry.TABLE_NAME, e.toString()); }
-        return highestRevenueDate;
+        }
+        catch (Exception e) { Log.e(FeedEntry.TABLE_NAME, e.toString()); }
+        return IDsListByMonths;
     }
 }

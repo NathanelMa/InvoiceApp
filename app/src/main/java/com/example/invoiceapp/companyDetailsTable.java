@@ -44,7 +44,7 @@ public class companyDetailsTable {
                     FeedEntry.COMPANY_NUMBER + " TEXT NOT NULL UNIQUE," +
                     FeedEntry.COMPANY_ID + " TEXT NOT NULL UNIQUE);";
 
-    public static String getTableName() {
+    public static @NonNull String getTableName() {
         return companyDetailsTable.FeedEntry.TABLE_NAME;
     }
 

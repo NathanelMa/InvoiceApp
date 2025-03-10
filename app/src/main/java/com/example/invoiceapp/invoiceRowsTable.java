@@ -72,11 +72,11 @@ public class invoiceRowsTable {
         return removedIDs;
     }
 
-    public static String getTableName() {
+    public static @NonNull String getTableName() {
         return FeedEntry.TABLE_NAME;
     }
 
-    public invoiceRowsTable(SQLiteDatabase db) {
+    public invoiceRowsTable(@NonNull SQLiteDatabase db) {
         this.sqLiteDatabase = db;
     }
 
@@ -164,44 +164,29 @@ public class invoiceRowsTable {
         return invoiceList;
     }
 
-    /// TODO TEST FOR THOSE
-
     /**
-     * Retrieves the total revenue generated from the beginning of the current month.
-     * @return Total revenue as a double value.
+     * Retrieves the total revenue from given IDs (Invoice ID).
+     * Will go over each row where has the same InvoiceID, and sum it.
+     * @param IDs String format "ID_1,ID_2,ID_3,...ID_n"
+     * @return Double, total revenue from all selected invoices. Return 0 for any error, or no invoices.
      */
-    public double getTotalRevenueThisMonth() {
-        String query = "SELECT SUM(" + FeedEntry.VALUE + " * " + FeedEntry.AMOUNT + ") " +
+    public double getTotalRevenueByIDs(@NonNull String IDs) {
+        if (IDs.isEmpty()) return 0;
+        String query =
+                "SELECT SUM(" + FeedEntry.VALUE + ") " +
                 "FROM " + FeedEntry.TABLE_NAME + " " +
-                "WHERE strftime('%Y-%m', 'now') = strftime('%Y-%m', (SELECT date(InvoiceDate) FROM Invoices WHERE " + FeedEntry.INVOICE_ID + " = Invoices._ID));";
+                "WHERE " + FeedEntry.INVOICE_ID + " IN (" + IDs + ");";
 
-        Cursor cursor = sqLiteDatabase.rawQuery(query, null);
-        if (cursor.moveToFirst()) {
-            double revenue = cursor.getDouble(0);
-            cursor.close();
-            return revenue;
+        double revenue = 0;
+        try {
+            Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+            if (cursor.moveToFirst()) {
+                revenue = cursor.getDouble(0);
+                cursor.close();
+            }
         }
-        cursor.close();
-        return 0;
-    }
-
-    /**
-     * Retrieves the highest invoice value recorded in the database.
-     * @return The highest invoice value as a double.
-     */
-    public double getLargestInvoiceValue() {
-        String query = "SELECT MAX(total) FROM (" +
-                " SELECT " + FeedEntry.INVOICE_ID + ", SUM(" + FeedEntry.VALUE + " * " + FeedEntry.AMOUNT + ") AS total" +
-                " FROM " + FeedEntry.TABLE_NAME +
-                " GROUP BY " + FeedEntry.INVOICE_ID + ");";
-        Cursor cursor = sqLiteDatabase.rawQuery(query, null);
-        if (cursor.moveToFirst()) {
-            double maxInvoiceValue = cursor.getDouble(0);
-            cursor.close();
-            return maxInvoiceValue;
-        }
-        cursor.close();
-        return 0;
+        catch (Exception e) { Log.e(FeedEntry.TABLE_NAME, e.toString()); }
+        return revenue;
     }
 
     /**
@@ -209,20 +194,23 @@ public class invoiceRowsTable {
      * @return The ID of the best-selling item, or -1 if no data exists.
      */
     public int getBestSellingItem() {
+        // Group by items IDs, (order by) sum each item amount from all rows and patch only 1,
+        // which is has highest sum. (Like CSV file 'GROUP BY')
+        int bestSellingItem = -1;
         String query =
                 "SELECT " + FeedEntry.ITEM_ID + " " +
                         "FROM " + FeedEntry.TABLE_NAME + " " +
                         "GROUP BY " + FeedEntry.ITEM_ID + " " +
                         "ORDER BY SUM(" + FeedEntry.AMOUNT + ") DESC " +
                         "LIMIT 1;";
-
-        Cursor cursor = sqLiteDatabase.rawQuery(query, null);
-        int bestSellingItem = -1;
-
-        if (cursor.moveToFirst()) {
-            bestSellingItem = cursor.getInt(0);
+        try {
+            Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+            if (cursor.moveToFirst()) {
+                bestSellingItem = cursor.getInt(0);
+            }
+            cursor.close();
         }
-        cursor.close();
+        catch (Exception e) { Log.e(FeedEntry.TABLE_NAME, e.toString()); }
         return bestSellingItem;
     }
 }

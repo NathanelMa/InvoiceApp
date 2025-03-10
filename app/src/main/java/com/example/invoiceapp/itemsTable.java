@@ -46,11 +46,11 @@ public class itemsTable {
                     FeedEntry.VALUE + " REAL NOT NULL," +
                     FeedEntry.IS_REMOVED + " INTEGER NOT NULL);";
 
-    public static String getTableName() {
+    public static @NonNull String getTableName() {
         return FeedEntry.TABLE_NAME;
     }
 
-    public itemsTable(SQLiteDatabase db) {
+    public itemsTable(@NonNull SQLiteDatabase db) {
         this.database = db;
     }
 

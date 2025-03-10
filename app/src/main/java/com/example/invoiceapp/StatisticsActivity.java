@@ -15,14 +15,13 @@ import android.view.MenuItem;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-
 import java.util.Calendar;
+
 
 public class StatisticsActivity extends AppCompatActivity {
 
@@ -46,15 +45,20 @@ public class StatisticsActivity extends AppCompatActivity {
         loadStatistics();
     }
 
+    @SuppressLint("SetTextI18n")
     private void loadStatistics() {
         DatabaseHelper database = DatabaseHelper.getInstance(getApplicationContext());
-        double totalRevenue = database.getTotalRevenueThisMonth();
+        double[] revenues = database.getTotalRevenues();
         String bestSellingItem = database.bestSellingItem();
+        String allRevs = getRevenuesString(revenues);
+        double thisRev = getCurrentMonthRevenue(revenues);
 
-        totalRevenueTextView.setText(FormatUtils.formatCurrency(totalRevenue));
+        totalRevenueTextView.setText(allRevs);
         bestSellingItemTextView.setText(bestSellingItem);
 
         TextView dateInfoTextView = findViewById(R.id.date_info);
+        TextView thisRevTextView = findViewById(R.id.total_revenue_label);
+        thisRevTextView.setText(thisRevTextView.getText() + " " + FormatUtils.formatCurrency(thisRev));
 
         ProgressBar progressBar = findViewById(R.id.progressBar);
         Calendar calendar = Calendar.getInstance();
@@ -88,5 +92,26 @@ public class StatisticsActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private static String getRevenuesString(double[] revs) {
+        String[] months = {
+                "January: ", "February: ", "March: ", "April: ", "May: ", "June: ",
+                "July: ", "August: ", "September: ", "October: ", "November: ", "December: "
+        };
+        if (revs == null || revs.length != 12) return "";
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < 12; i++) {
+            String rev = FormatUtils.formatCurrency(revs[i]);
+            result.append(months[i]).append(rev);
+            if (i + 1 < 12) result.append("\n");
+        }
+        return result.toString();
+    }
+
+    private static double getCurrentMonthRevenue(double[] revs) {
+        if (revs == null || revs.length != 12) return 0;
+        int currentMonth = Calendar.getInstance().get(Calendar.MONTH);
+        return revs[currentMonth];
     }
 }
