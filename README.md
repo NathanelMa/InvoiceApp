@@ -41,9 +41,9 @@ This project is licensed under the **MIT License** – see the `LICENSE` file fo
   
 ## **Screenshots**
 <p align="center">
-   <img src="https://github.com/user-attachments/assets/17742b5f-ddd4-4b5b-8734-6c1ffd168679" width="5%" />
-   <img src="https://github.com/user-attachments/assets/34d096a3-d6f2-408e-8beb-b851f8fb942b" width="5%" />
-   <img src="https://github.com/user-attachments/assets/ff4e7e74-fdf5-466a-8a66-f08c821bd528" width="5%" />
-   <img src="https://github.com/user-attachments/assets/cffbcbb5-99bb-4f2f-b0da-52cd2d6f9f89" width="5%" />
-   <img src="https://github.com/user-attachments/assets/aa06e473-2801-4105-bdf1-0fd81390381e" width="5%" />
+   <img src="https://github.com/user-attachments/assets/17742b5f-ddd4-4b5b-8734-6c1ffd168679" width="12%" />
+   <img src="https://github.com/user-attachments/assets/34d096a3-d6f2-408e-8beb-b851f8fb942b" width="12%" />
+   <img src="https://github.com/user-attachments/assets/ff4e7e74-fdf5-466a-8a66-f08c821bd528" width="12%" />
+   <img src="https://github.com/user-attachments/assets/cffbcbb5-99bb-4f2f-b0da-52cd2d6f9f89" width="12%" />
+   <img src="https://github.com/user-attachments/assets/aa06e473-2801-4105-bdf1-0fd81390381e" width="12%" />
 </p>
