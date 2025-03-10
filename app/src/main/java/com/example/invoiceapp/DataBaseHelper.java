@@ -31,14 +31,6 @@ import java.util.Set;
  */
 final class DatabaseHelper extends SQLiteOpenHelper {
 
-    /**
-     * Data base helper for manging 3 tables:
-     * itemsTable, invoiceRowsTable and invoicesFramesTable.
-     * NOTE: Private constructor to prevent direct instantiation, Make call to static method
-     * "getInstance()" instead.
-     * All return object handle, type @param InvoiceItem
-     */
-
     private static final String DATABASE_NAME = "invoices.db";
     private static final int DATABASE_VERSION = 1;
     private static DatabaseHelper INSTANCE;
@@ -216,11 +208,6 @@ final class DatabaseHelper extends SQLiteOpenHelper {
     invoicesFramesTable   //////////////////////////////////////////////////////////////////////////
     /*//////////////////////////////////////////////////////////////////////////////////////////////
 
-    /// Each composing/edit the order: Compose frame -> Successes ? -> Add all rows.
-    /// Safe edit: See docstring for the safety.
-    /// NOTE: All invoice calculation made here, not in the table helper classes,
-    /// including composing time.
-
     /**
      * Return the invoice frame by his UNIQUE ID as found in database
      * @param ID UNIQUE ID invoiceFrame
@@ -334,7 +321,12 @@ final class DatabaseHelper extends SQLiteOpenHelper {
     Statics   //////////////////////////////////////////////////////////////////////////////////////
     /*//////////////////////////////////////////////////////////////////////////////////////////////
 
-    public String bestSellingItem() {
+    /**
+     * Will return the best selling item, based on data from the tables.
+     * @return Not empty string, contain the name (and price) of best selling item. If the item,
+     *  was removed, will contain "(Removed Item)". If no data to patch, will return "NO DATA".
+     */
+    public @NonNull String bestSellingItem() {
         int itemID = this.invoiceRowsTable.getBestSellingItem();
         Pair<Item, Boolean> resPair = this.itemsTable.getItem(itemID);
         String res = "NO DATA";
