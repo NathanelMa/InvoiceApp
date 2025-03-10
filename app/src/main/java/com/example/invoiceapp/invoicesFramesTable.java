@@ -257,8 +257,6 @@ public class invoicesFramesTable {
         return invoice;
     }
 
-    /// TODO TEST OUTPUT
-
     /**
      * Retrieves the total revenue from the beginning of the current month.
      * @return The total revenue for the current month.
