@@ -38,4 +38,5 @@ This project is licensed under the **MIT License** – see the `LICENSE` file fo
 - **NathanEl Mark**
 - **Dor Binyamin**
 - **Orel Gigi**
-
+  
+![App Screenshot](https://github.com/user-attachments/assets/34d096a3-d6f2-408e-8beb-b851f8fb942b)
