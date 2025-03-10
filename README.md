@@ -16,6 +16,7 @@ This project was developed as part of the final assignment in the Computer Scien
 -  Local database storage using SQLite.
 -  PDF generation and sharing of invoices.
 -  Business profile
+-  Calcaltion of revenue for each month.
 
 ## **Technologies Used**
 - **Programming Language:** Java
