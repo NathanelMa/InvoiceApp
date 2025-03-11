@@ -96,8 +96,18 @@ public class StatisticsActivity extends AppCompatActivity {
 
     private static String getRevenuesString(double[] revs) {
         String[] months = {
-                "January: ", "February: ", "March: ", "April: ", "May: ", "June: ",
-                "July: ", "August: ", "September: ", "October: ", "November: ", "December: "
+                "January:\t\t\t\t ",
+                "February:\t\t\t ",
+                "March:\t\t\t\t\t\t\t ",
+                "April:\t\t\t\t\t\t\t\t\t ",
+                "May:\t\t\t\t\t\t\t\t\t ",
+                "June:\t\t\t\t\t\t\t\t\t",
+                "July:\t\t\t\t\t\t\t\t\t\t ",
+                "August:\t\t\t\t\t\t\t",
+                "September:\t\t",
+                "October:\t\t\t\t\t\t",
+                "November:\t\t",
+                "December:\t\t\t"
         };
         if (revs == null || revs.length != 12) return "";
         StringBuilder result = new StringBuilder();
