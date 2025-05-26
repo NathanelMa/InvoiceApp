@@ -1,5 +1,4 @@
 # **Invoice Manager Application**
-_A Final Project at Tel-Hai Academic College_
 
 ## **Overview**
 This project was developed as part of the final assignment in the Computer Science degree program at **Tel-Hai Academic College**. The application serves anyone interested in managing invoices, allowing users to:
