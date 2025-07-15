@@ -1,7 +1,7 @@
 # **Invoice Manager Application**
 
 ## **Overview**
-This project was developed as part of the final assignment in the Computer Science degree program at **Tel-Hai Academic College**. The application serves anyone interested in managing invoices, allowing users to:
+This project was developed as part of an assignment in the Computer Science degree program at Tel-Hai Academic College. The application serves anyone interested in managing invoices, allowing users to:
 - Edit, add, and review invoices.
 - Search invoices by invoice number or date.
 - Sort search results for better organization.
